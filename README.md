@@ -3,6 +3,7 @@ A simple Python project that prints a personalized daily sheet every morning —
 
 Daily Print Automation — Full Setup Guide (PDF Ready)
 Author: Morgan Project: Daily Print Automation Platform: Windows 10/11 Printer: Thermal (Y813BT Label) Language: Python 3.10+
+
 📖 Overview
 This document explains how to build a fully automated daily print system that generates a personalized daily sheet including:
 •	Bible verse
@@ -14,6 +15,7 @@ This document explains how to build a fully automated daily print system that ge
 •	Google Calendar events (today + tomorrow)
 •	Clean thermal printer friendly layout
 The system runs automatically every day using Windows Task Scheduler.
+
 🧰 Requirements
 •	Windows 10 or 11
 •	Python 3.10+
@@ -28,6 +30,7 @@ o	Pillow
 Install packages:
 Code
 pip install google-api-python-client google-auth google-auth-oauthlib pywin32 pillow
+
 🔐 1. Google Calendar API Setup
 Step 1 — Create Google Cloud Project
 Visit: https://console.cloud.google.com (console.cloud.google.com in Bing) Create a new project.
@@ -45,6 +48,7 @@ Step 4 — First Run
 Running the script will open a browser window to authorize your Google account. This generates:
 Code
 token.json
+
 📅 2. Google Calendar Fetch Script
 Create:
 Code
@@ -124,11 +128,13 @@ def get_today_and_tomorrow_events():
     today = fetch_events_for_day(0)
     tomorrow = fetch_events_for_day(1)
     return today, tomorrow
+
 🖨️ 3. Daily Print Script
 Create:
 Code
 daily_print.py
 Paste the full working version you already have (the one I provided earlier).
+
 🖼️ 4. Printer Setup
 Install pywin32:
 Code
@@ -138,6 +144,7 @@ Control Panel → Devices & Printers → Properties
 Set:
 Code
 printer_name = "your printer name"
+
 🔁 5. Automate Daily Printing (Windows Task Scheduler)
 Step 1 — Create launcher file
 Create:
@@ -164,6 +171,7 @@ Step 5 — Action
 •	Start in: C:\daily_print
 Step 6 — Save
 Enter your Windows password.
+
 📦 6. Folder Structure
 Code
 C:\daily_print\
@@ -174,6 +182,7 @@ C:\daily_print\
 ├── token.json              (ignored)
 ├── run_daily_print.bat
 └── daily.png               (generated)
+
 🔒 7. Security & GitHub Safety
 Add this .gitignore:
 Code
@@ -183,6 +192,7 @@ daily.png
 *.pyc
 __pycache__/
 This prevents leaking your Google credentials.
+
 📜 8. License (Recommended)
 MIT License:
 Code
